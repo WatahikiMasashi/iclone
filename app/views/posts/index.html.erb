@@ -1,0 +1,25 @@
+<div class="top">
+ <p>
+   <%= image_tag ("digital_camera.png") %>
+ </p>
+ <h1>
+  Instagram Clone
+</h1>
+</div>
+<% if logged_in? %>
+  <%= link_to '新しい記事を書く', new_post_path , class: 'btn btn-default' %>
+<% end %>
+<div class="row">
+   <% @posts.each do |post| %>
+     <div class="col-12 post-panel">
+       <p><%= post.content %></p>
+       <p><%= post.created_at %></p>
+       <div class="post-links">
+         <%= link_to 'Show', post, class: 'btn btn-info' %>
+         <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-success' %> |
+         <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+       </div>
+     </div>
+   <% end %>
+ </div>
+</div>

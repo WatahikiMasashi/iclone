@@ -1,0 +1,19 @@
+<h3>以下の内容で、送信する。</h3>
+
+<%= form_with(model: @post, url: posts_path, local: true, method: 'post') do |form| %>
+     <%= form.hidden_field :content %>
+     <p>content:<%= @post.content %></p>
+     <% unless @post.image.url.nil? %>
+     <%= image_tag(@post.image.url) %>
+     <%= form.hidden_field :image_cache %><br>
+     <% end %>
+     <%= form.submit %>
+   <% end %>
+
+   <%= form_with(model: @post, url: new_blog_path, local: true, method: 'get') do |form| %>
+     <%= form.hidden_field :title %>
+     <%= form.hidden_field :content %>
+     <% unless @post.image.url.nil? %>
+     <%= form.hidden_field :image_cache %>
+     <% end %>
+   <% end %>
