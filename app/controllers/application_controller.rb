@@ -12,13 +12,12 @@ before_action :set_current_user
   end
 
   def other_person
-    if  @blog.user_id != current_user.id
+    if  @post.user_id != current_user.id
       flash[:notice] = "他の人の投稿です"
-      redirect_to("/blogs")
+      redirect_to("/posts")
     end
   end
 
   protect_from_forgery with: :exception
   include SessionsHelper
-  end
 end

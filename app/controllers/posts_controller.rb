@@ -2,13 +2,9 @@ class PostsController < ApplicationController
   before_action :authenticate_user, only: [:new,:edit,:show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :other_person,only: [:edit, :update, :destroy]
-  # GET /blogs
+  # GET /posts
   def index
     @posts = Post.all
-  end
-
-  def show
-    @favorite = current_user.favorites.find_by(post_id: @post.id)
   end
 
   def new
@@ -61,6 +57,4 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
-end
-
 end

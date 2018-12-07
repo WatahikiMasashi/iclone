@@ -10,7 +10,7 @@
      <%= form.submit %>
    <% end %>
 
-   <%= form_with(model: @post, url: new_blog_path, local: true, method: 'get') do |form| %>
+   <%= form_with(model: @post, url: new_post_path, local: true, method: 'get') do |form| %>
      <%= form.hidden_field :title %>
      <%= form.hidden_field :content %>
      <% unless @post.image.url.nil? %>

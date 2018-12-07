@@ -1,13 +1,13 @@
+<% unless @post.image.url.nil? %>
+<p>
+  <strong></strong>
+  <%= image_tag @post.image.url %>
+</p>
+<% end %>
 <p>
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
-<% unless @post.image.url.nil? %>
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @post.image.url %>
-</p>
-<% end %>
 <% if @favorite.present? %>
   <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
 <% else %>
@@ -15,8 +15,4 @@
 <% end %>
 
 <%= link_to 'Back', posts_path,class:'btn btn-default' %>
-<% if logged_in? %>
-  <% if current_user.id == blog.user_id  %>
-    <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-success' %> |
-  <% end %>
-<% end %>
+<%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-success' %> |

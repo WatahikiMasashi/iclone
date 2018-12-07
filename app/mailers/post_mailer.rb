@@ -1,6 +1,6 @@
 class PostMailer < ApplicationMailer
-  def blog_mail(blog)
-    @blog = blog
-    mail to: @blog.user.email, subject: "投稿完了通知"
+  def post_mail(post)
+    @post = post
+    mail to: @post.user.email, subject: "投稿完了通知"
   end
 end

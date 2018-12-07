@@ -1,11 +1,22 @@
 class FavoritesController < ApplicationController
   def create
-    favorite = current_user.favorites.create(blog_id: params[:blog_id])
-    redirect_to blogs_url, notice: "#{favorite.blog.user.name}さんのブログをお気に入り登録しました"
+    favorite = current_user.favorites.create(post_id: params[:post_id])
+    redirect_to posts_url, notice: "#{favorite.post.user.name}さんのブログをお気に入り登録しました"
   end
 
   def destroy
     favorite = current_user.favorites.find_by(id: params[:id]).destroy
-    redirect_to blogs_url, notice: "#{favorite.blog.user.name}さんのブログをお気に入り解除しました"
+    redirect_to posts_url, notice: "#{favorite.post.user.name}さんのブログをお気に入り解除しました"
+  end
+
+  def show
+    @favorite = Favorite.find(params[:id])
+    @uset = @Favorite.user_posts
+  end
+
+  private
+
+  def favorite_params
+    params.require(:favorite).permit(user_id,post_id)
   end
 end

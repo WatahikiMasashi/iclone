@@ -1,6 +1,6 @@
 <% unless @user.icon.url.nil? %>
 <p>
-  <strong>Image:</strong>
+  <strong></strong>
   <%= image_tag @user.icon.url %>
 </p>
 <% end %>
@@ -8,11 +8,10 @@
 
 <p>メールアドレス: <%= @user.email %></p>
 
-<%= link_to '新しく投稿する', new_blog_path , class: 'btn btn-default' %><br>
-<%= link_to '登録内容変更', new_user_path , class: 'btn btn-default' %><br>
+<%= link_to '新しく投稿する', new_post_path , class: 'btn btn-default' %><br>
 <h1>お気に入り記事一覧</h1>
 <% @favorites.each do |favorite| %>
-  <h2><%= favorite.title %></h2>
+  <p><%= image_tag favorite.image.url %></p>
   <p><%= favorite.content %></p>
   <p><%= favorite.user.name + "さんの投稿" %></p>
   <p><%= favorite.created_at %></p>
