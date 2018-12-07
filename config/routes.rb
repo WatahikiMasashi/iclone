@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/users/favorite/:id', to: 'users#favorite_index', as: 'favorite_index'
   resources :favorites, only: [:create , :destroy ]
   resources :contacts, only: [:new, :create]
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" 
   resources :posts do
     collection do
       post :confirm

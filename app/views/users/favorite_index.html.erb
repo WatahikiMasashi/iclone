@@ -1,6 +1,8 @@
 <h1><%= @user.name %>のお気に入り一覧</h1>
 <% @favorites_posts.each do |favorite| %>
-  <p><%= image_tag favorite.image.url %></p>
+  <% unless favorite.image.url.nil? %>
+    <p><%= image_tag favorite.image.url %></p>
+  <% end %>
   <p><%= favorite.content %></p>
   <p><%= favorite.user.name + "さんの投稿" %></p>
   <p><%= favorite.created_at %></p>
